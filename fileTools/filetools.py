@@ -49,4 +49,5 @@ def initial_commit(projdir: str, remotePath: str):
 
 def generate_branches(rootdir: str):
     os.system('cd ' + rootdir)
-    os.system('git branch dev')
+    os.system('git checkout -b dev')
+    os.system('git push --set-upstream origin dev')
