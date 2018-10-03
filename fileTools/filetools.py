@@ -3,6 +3,7 @@ from pathlib import Path
 
 import datetime
 
+
 def makeProjDir(rootDir: str, projectName: str, remotePath: str):
     projDirStr = rootDir + "/" + projectName
     init_git_repo(rootDir, projDirStr)
@@ -25,18 +26,23 @@ def makeProjDir(rootDir: str, projectName: str, remotePath: str):
     generate_branches(projDirStr)
 
 
+def generate_reST_header(name: str):
+    length = len(name)
+    i = 0
+    header = ""
+
+    while i < length:
+        header += "="
+
+    return header + "\n" + name + "\n" + header + "\n"
+
+
+
 def init_git_repo(rootDir: str, projectname: str):
     print('Attempting to create git repo at \"' + rootDir + "\" called \"" +
           projectname)
     os.system('cd ' + rootDir)
     os.system('git init ' + projectname)
-
-
-def generateBasicTextFile(dirstr: str, name: str, extension: str, initaltext:
-        str):
-    file = open(dirstr + "/" + name.upper() + "." + extension, "w+")
-    file.write('########\n' + name.upper() + '\n########\n\n' + initaltext)
-    file.close()
 
 
 def initial_commit(projdir: str, remotePath: str):
