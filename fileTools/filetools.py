@@ -26,6 +26,13 @@ def makeProjDir(rootDir: str, projectName: str, remotePath: str):
     generate_branches(projDirStr)
 
 
+def generateBasicTextFile(dirstr: str, name: str, extension: str, initaltext:
+        str):
+    file = open(dirstr + "/" + name.upper() + "." + extension, "w+")
+    file.write(generate_reST_header(name) + initaltext)
+    file.close()
+
+
 def generate_reST_header(name: str):
     length = len(name)
     i = 0
@@ -33,6 +40,7 @@ def generate_reST_header(name: str):
 
     while i < length:
         header += "="
+        i += 1
 
     return header + "\n" + name + "\n" + header + "\n"
 
