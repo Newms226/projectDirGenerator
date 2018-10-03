@@ -42,7 +42,7 @@ def generate_reST_header(name: str):
         header += "="
         i += 1
 
-    return header + "\n" + name + "\n" + header + "\n"
+    return header + "\n" + name.capitalize() + "\n" + header + "\n"
 
 
 
@@ -56,6 +56,7 @@ def init_git_repo(rootDir: str, projectname: str):
 def initial_commit(projdir: str, remotePath: str):
     os.system('cd ' + projdir)
     os.system('git add .')
+    os.system('git status')
     os.system("git commit -m \'initial commit, autogen.\'")
     os.system("git remote add origin " + remotePath)
     os.system("git push -u origin master")
